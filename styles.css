@@ -1,0 +1,19 @@
+header
+{
+    background-color: #16302B ;
+    color:gainsboro;
+    .intro {max-width: 500;
+    text-align: left;}
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+}
+.image {border-radius: 15px;
+}}
+
+footer
+{
+    background-color: #16302B;
+    color: gainsboro;
+    text-align:center;
+}
