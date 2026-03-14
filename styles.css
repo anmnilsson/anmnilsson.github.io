@@ -1,15 +1,461 @@
-header
-{
-    background-color: #16302B ;
-    color:gainsboro;
-    .intro {max-width: 500;
-    text-align: left;}
-display: flex;
-justify-content: space-evenly;
-align-items: center;
+    body {
+      background-color:  #0a1714;
+      margin: 0;                /* removes the default browser margin */
+      padding: 0;               /* removes any default padding too */
+    }
+
+.header {
+  background-color: #0a1714;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 30px;
+  display: flex;              /* makes header a flex container */
+  flex-direction: column;     /* stacks header-top and section vertically */
+  align-items: center;
+  gap: 30px;                  /* space between top section and cards */
 }
-.image {border-radius: 15px;
-}}
+
+.header-top {
+  display: flex;
+  flex-direction: row;        /* image and text sit side by side */
+  align-items: center;        /* vertically centers them */
+  gap: 60px;                  /* space between image and text */
+  width: 100%;
+}
+
+.header-image {
+  width: 550px;
+  height: 550px;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 10;
+  flex-shrink: 0;
+  position: relative;         /* changed from absolute */
+  margin-top: 30px;
+  margin-left: 15%;   /* push image in from the left edge */
+  margin-bottom: 20px;        /* space between image and name */
+}
+
+/* holds the h1 and p stacked vertically */
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-right: 15%;
+}
+
+.section-text {
+  color: #F7DAD9;
+  font-size: 35px;
+  z-index: 10;
+  white-space: nowrap;
+  width: auto;
+  position: relative;
+  text-align: left;
+}
+
+.header-tagline {
+  color: #c0b3ac;
+  font-size: 30px;
+  margin: 0;
+}
+
+.section {
+  display: flex;              /* changed from grid to flex */
+  flex-direction: row;        /* cards sit side by side */
+  width: 100%;
+  box-sizing: border-box;
+  gap: 10px;                  /* space between cards */
+}
+
+.flip-card {
+  flex: 1;                    /* each card takes equal width */
+ width: 22%;
+height: 250px;
+ perspective: 1000px;
+}
+
+.flip-inner {
+ width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.flip-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0a1714;
+  z-index: 2;
+  transition: opacity 0.8s ease;  /* fades out instead of flipping */
+}
+
+.front-1 { background-color: #b58689; }
+.front-2 { background-color: #586F7C; }
+.front-3 { background-color: #eab868; }
+.front-4 { background-color: #837A75; }
+
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.flip-card:hover .flip-front {
+  opacity: 0;
+}
+
+/* keeps back image visible when button is hovered */
+.flip-card:has(.flip-button:hover) .flip-front {
+  opacity: 0;
+}
+
+.flip-button {
+  position: absolute;        /* sits on top of the card */
+  top: 20px;              /* distance from the bottom of the card */
+  left: 50%;
+  transform: translateX(-50%); /* centers it horizontally */
+  color: #443730;
+  text-decoration: none;     /* removes underline from the link */
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border: 2px solid #443730; /* subtle border */
+  z-index: 10;               /* sits on top of the card images */
+  white-space: nowrap;       /* keeps text on one line */
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.flip-card:nth-child(1) .flip-button {
+  background-color: #b58689;
+  border-color: #443730;
+}
+.flip-card:nth-child(1) .flip-button:hover { background-color: #8f5f62; }
+
+/* card 2 button */
+.flip-card:nth-child(2) .flip-button {
+  background-color: #586F7C;
+  border-color: #443730;
+}
+.flip-card:nth-child(2) .flip-button:hover { background-color: #3a4f59; }
+
+/* card 3 button */
+.flip-card:nth-child(3) .flip-button {
+  background-color: #eab868;
+  border-color: #443730;
+}
+.flip-card:nth-child(3) .flip-button:hover { background-color: #c9943a; }
+
+/* card 4 button */
+.flip-card:nth-child(4) .flip-button {
+  background-color: #837A75;
+  border-color: #443730;
+}
+.flip-card:nth-child(4) .flip-button:hover { background-color: #5e5651; }
+
+.flip-button:hover {
+  transform: translateX(-50%) scale(1.1);
+  background-color: rgba(20, 20, 20, 1);
+  color: whitesmoke;
+}
+
+.section-2-heading {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    align-items: center;
+}
+
+.section-2-heading h2 {
+    color: #c0b3ac;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+.section-2-heading h3 {
+    color: #c0b3ac;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+.section-2-heading h4 {
+    color: #c0b3ac;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+.email-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #16302B;
+  color: #F7DAD9;
+  text-align: center;
+}
+
+.email-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.email-input {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  width: 300px;
+  outline: none;
+  background-color: #F7DAD9;
+  color: #16302B;
+}
+
+.email-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background-color: #A5907E;
+  color: #F7DAD9;
+  cursor: pointer;  /* changes mouse to a hand on hover */
+}
+
+.email-button:hover {
+  background-color: #F7DAD9;
+  color: #16302B;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden;        /* hides photos outside the visible area */
+  position: relative;
+  background-color: #16302B;
+  padding: 20px 0;
+  z-index: 1;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s ease;  /* smooth sliding animation */
+}
+
+.carousel-item {
+  min-width: 33.333%;      /* each item takes up 1/3 of the screen */
+  padding: 0 10px;
+  box-sizing: border-box;
+  filter: blur(3px);       /* blurs all items by default */
+  transform: scale(0.9);   /* makes side photos slightly smaller */
+  transition: filter 0.8s ease, transform 0.8s ease;
+}
+
+.carousel-item.active {
+  filter: blur(0);         /* removes blur from center photo */
+  transform: scale(1);     /* makes center photo full size */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carousel-slide {
+  position: relative;   /* needed so overlay positions relative to the slide */
+  width: 100%;
+  height: 400px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 50%;                        /* moves it to the vertical center */
+  left: 50%;                       /* moves it to the horizontal center */
+  transform: translate(-50%, -50%); /* offsets it back to true center */
+  width: 80%;                      /* controls how wide the overlay is */
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);  /* semi transparent black */
+  color: whitesmoke;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.carousel-overlay p {
+  margin: 0;
+}
+
+
+.products {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  background-color: #0a1714;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 20%;              /* controls how wide each product is */
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-link {
+  color: #F7DAD9;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.product-link:hover {
+  color: #A5907E;          /* color change on hover */
+  text-decoration: underline;
+}
+
+.section-3-heading {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    align-items: center;
+}
+.section-3-heading h2 {
+    color: #c0b3ac;
+    font-size: 30px;
+    text-align: center;
+    margin: 0;        
+}
+
+.connect-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 60px 40px;
+  background-color: #16302B;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.connect-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+}
+
+.connect-message h2 {
+  color: #F7DAD9;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.connect-message p {
+  color: #A5907E;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.connect-button {
+  display: inline-block;
+  padding: 14px 35px;
+  background-color: #A5907E;
+  color: #F7DAD9;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.connect-button:hover {
+  background-color: #F7DAD9;
+  color: #16302B;
+  transform: scale(1.05);
+}
+
+/* vertical divider line between the two sections */
+.connect-divider {
+  width: 2px;
+  height: 150px;
+  background-color: #A5907E;
+  opacity: 0.5;
+}
+
+.connect-linkedin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+}
+
+.connect-linkedin p {
+  color: #F7DAD9;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.linkedin-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #F7DAD9;
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  border: 2px solid #0077b5;   /* LinkedIn blue border */
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.linkedin-link:hover {
+  background-color: #0077b5;   /* LinkedIn blue on hover */
+  transform: scale(1.05);
+}
+
+.linkedin-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+}
 
 footer
 {
